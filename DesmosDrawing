@@ -1,0 +1,136 @@
+public class Main{
+  public static void main(String[] args){
+    String input = "Peyton Crawford";
+    boolean wantUnderline = true;
+    String longVS = "bcdefghiklmnopqrtuw0134789";
+    String longLS = "bcdefgklpr";
+    String longBS = "hmnoquw08";
+    String horiz = "cefghlopqrstuz02345689";
+    input = input.toLowerCase();
+    String output = "";
+    for (int i = 0; i < input.length(); i++){
+      int tx = 3*i;
+      String s = input.substring(i, i+1);
+      if (!s.equals(" ")){
+      for (int j = 0; j < longVS.length(); j++){
+        if(s.equals(longVS.substring(j, j+1))){
+          if (s.equals("i") || s.equals("t")){
+              output += "," + DesmosDrawing.tallVertical(1.25, tx);
+          } else {
+            for (int a = 0; a < longBS.length(); a++){
+              if (s.equals(longBS.substring(a, a+1))){
+                output += "," + DesmosDrawing.tallVertical(0,tx) + "," + DesmosDrawing.tallVertical(2.5,tx); 
+              } 
+            }
+              for(int b = 0; b < longLS.length(); b++){
+                if (s.equals(longLS.substring(b, b+1))){
+                  output += "," + DesmosDrawing.tallVertical(0.0,tx);
+               }
+             }
+              if (s.equals("1") || s.equals("3") || s.equals("4") || s.equals("7") || s.equals("8") || s.equals("9")){
+                  output += "," + DesmosDrawing.tallVertical(2.5,tx);
+              }
+          }
+        } 
+      }
+      for (int c = 0; c < horiz.length(); c++){
+        if (s.equals(horiz.substring(c, c+1))){
+          if(s.equals("l") || s.equals("u")){
+            output += "," + DesmosDrawing.horizontal(0,tx);
+         } else if (s.equals("e") || s.equals("s") || s.equals("2") || s.equals("3") || s.equals("5") || s.equals("6") || s.equals("8") || s.equals("9")){
+            output += "," + DesmosDrawing.horizontal(0,tx) + "," + DesmosDrawing.horizontal(5,tx) + "," + DesmosDrawing.horizontal(2.5,tx);
+         } else if (s.equals("p") || s.equals("r") || s.equals("f")){
+            output += "," + DesmosDrawing.horizontal(2.5,tx) + "," + DesmosDrawing.horizontal(5,tx);
+         } else if (s.equals("c") || s.equals("g") || s.equals("q") || s.equals("o") || s.equals("z") || s.equals("0")){
+            output += "," + DesmosDrawing.horizontal(5,tx) + "," + DesmosDrawing.horizontal(0,tx);
+         } else if (s.equals("h") || s.equals("4"))
+            output += "," + DesmosDrawing.horizontal(2.5,tx);
+        } else if (s.equals("t")) {
+            output += "," + DesmosDrawing.horizontal(5,tx);
+        }
+      }
+        if (s.equals("p")){
+          output += "," + DesmosDrawing.smallVertical(2.5, 2.5,tx);
+        } else if (s.equals("r")) {
+          output += "," + DesmosDrawing.smallVertical(2.5, 2.5,tx) + "," + DesmosDrawing.smallDiagonal("-",2.5, 0.0, tx);
+        } else if (s.equals("s") || s.equals("5")){
+          output += "," + DesmosDrawing.smallVertical(0, 2.5,tx) + "," + DesmosDrawing.smallVertical(2.5, 0,tx);
+        } else if (s.equals("m")){
+          output += "," + DesmosDrawing.smallDiagonal("-", 1.25, 2.5,tx) + "," + DesmosDrawing.smallDiagonal("+", 1.25, 2.5,tx);
+        } else if(s.equals("y")){
+          output += "," + DesmosDrawing.smallDiagonal("-", 1.25, 2.5,tx) + "," + DesmosDrawing.smallDiagonal("+", 1.25, 2.5,tx) + "," + DesmosDrawing.smallVertical(1.25, 0.0,tx);
+        } else if (s.equals("r")){
+          output += "," + DesmosDrawing.smallDiagonal("-", 2.5, 0.0,tx);
+        } else if (s.equals("n")){
+          output += "," + DesmosDrawing.smallDiagonal("-", 2.5, 0.0,tx) + "," + DesmosDrawing.smallDiagonal("-", 1.25, 2.5,tx); 
+        } else if (s.equals("x")){
+          output += "," + DesmosDrawing.smallDiagonal("+", 0.0, 0.0,tx) + "," + DesmosDrawing.smallDiagonal("+", 1.25, 2.5, tx) + "," + DesmosDrawing.smallDiagonal("-", 2.5, 0.0,tx) + "," + DesmosDrawing.smallDiagonal("-", 1.25, 2.5,tx); 
+        } else if (s.equals("z")){
+          output += "," + DesmosDrawing.smallDiagonal("+", 0.0, 0.0,tx) + "," + DesmosDrawing.smallDiagonal("+", 1.25, 2.5,tx);
+        } else if (s.equals("w")){
+          output += "," + DesmosDrawing.smallDiagonal("+", 0.0, 0.0,tx) + "," + DesmosDrawing.smallDiagonal("-", 2.5, 0.0,tx);
+        } else if (s.equals("a")){
+          output += ",\\left(1.25t+" + tx + ",5t\\right),\\left(1.25t+1.25+" + tx + ",-5t+5\\right),\\left(1.2t+0.65+" + tx + ",2.5\\right)";
+        } else if (s.equals("q")){
+          output += ",\\left(t+2+" + tx + ",-t+0.5\\right)";
+        } else if (s.equals("g")){
+          output += ",\\left(2.5+" + tx + ",2.5t\\right),\\left(t+1.5+" + tx + ",2.5\\right)";
+        } else if (s.equals("k")){
+          output += ",\\left(2.5t+" + tx + ",2.5t+2.5\\right),\\left(-2.5t+2.5+" + tx + ",2.5t\\right)";
+        } else if (s.equals("v")){
+          output += ",\\left(-1.25t+1.25+" + tx + ",5t\\right),\\left(1.25t+1.25+" + tx + ",5t\\right)";
+        } else if (s.equals("d")){
+          output += ",\\left(\\sqrt{2.5^{2}-\\left(5t-2.5\\right)^{2}}+" + tx + ",5t\\right)";
+        } else if (s.equals("b")){
+          output += ",\\left(1.25t+" + tx + ",5\\right),\\left(1.25t+" + tx + ",0\\right),\\left(1.25t+" + tx + ",2.5\\right),\\left(\\sqrt{1.25^{2}-\\left(5t-3.75\\right)^{2}}+1.25+" + tx + ",5t\\right),\\left(\\sqrt{1.25^{2}-\\left(5t-1.25\\right)^{2}}+1.25+" + tx + ",5t\\right)";
+        } else if (s.equals("j")){
+          output += ",\\left(2.5+" + tx + ",3.75t+1.25\\right),\\left(5t+" + tx + ",-1.25\\sqrt{1-\\frac{\\left(5t-1.25\\right)^{2}}{1.25^{2}}}+1.25\\right)";
+        } else if (s.equals("4") || s.equals("5") || s.equals("6") || s.equals("9")){
+          output += "," + DesmosDrawing.smallVertical(0,2.5,tx);
+        }
+        if (s.equals("6"))
+          output += "," + DesmosDrawing.smallVertical(0,0,tx) + "," + DesmosDrawing.smallVertical(2.5,0,tx);
+        if (s.equals("2"))
+          output += "," + DesmosDrawing.smallVertical(0,0,tx) + "," + DesmosDrawing.smallVertical(2.5,2.5,tx);
+        if (s.equals("7"))
+          output += "," + DesmosDrawing.horizontal(5,tx);
+        if (s.equals("1"))
+          output += ",\\left(-t+2.5+" + tx + ",-t+5\\right)";
+    }
+    }
+    if (wantUnderline)
+      output += ",\\left(" + (input.length()*3-0.5) + "t,-1\\right)";
+    if (output.substring(0, 1).equals(","))
+      System.out.println(output.substring(1));
+    else 
+      System.out.println(output);
+}
+}
+
+public class DesmosDrawing {
+  static boolean wantItalic = false;
+  public static String tallVertical(double xVal, int tx){
+    if (wantItalic)
+      return "\\left(" + (xVal+tx) + "+t,5t\\right)";
+    else
+      return "\\left(" + (xVal+tx) + ",5t\\right)";
+  }
+  public static String horizontal(double yVal, int tx){
+    if (wantItalic && yVal != 0)
+      return "\\left(2.5t+" + tx + "+" + (5/yVal) + "," + yVal + "\\right)";
+    else
+      return "\\left(2.5t+" + tx + "," + yVal + "\\right)";
+  }
+  public static String smallVertical(double xVal, double yVal, int tx){
+    if (wantItalic){
+      if(yVal != 0)
+        return "\\left(" + (xVal+tx) + "+0.5t+" + (5/yVal) + ",2.5t" + yVal + "\\right)";
+      else 
+        return "\\left(" + (xVal+tx) + "+0.5t,2.5t" + yVal + "\\right)";
+    } else
+      return "\\left(" + (xVal+tx) + ",2.5t+" + yVal + "\\right)";
+  }
+  public static String smallDiagonal(String slope, double xVal, double yVal, int tx){ 
+      return "\\left(" + slope + "1.25t+" + (xVal+tx) + ",2.5t+" + yVal + "\\right)";
+  }
+}
